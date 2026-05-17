@@ -49,13 +49,12 @@ export default function OverviewTab() {
         <p style={{ color:'#6b7280', fontSize:14, marginTop:4 }}>System-wide metrics · {new Date().toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' })}</p>
       </div>
 
-      {/* KPI Grid */}
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))', gap:16, marginBottom:32 }}>
+      {/* KPI Grid — responsive */}
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(160px,1fr))', gap:12, marginBottom:32 }}>
         {cards.map(c => <StatCard key={c.label} {...c} />)}
       </div>
 
-      {/* Charts */}
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:20 }}>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:20 }}>
         {[
           { title:'New Clinics', sub:'Last 30 days', data: analytics?.clinics_per_day ?? [], color:'#818cf8' },
           { title:'Patient Registrations', sub:'Last 30 days', data: analytics?.patients_per_day ?? [], color:'#34d399' },

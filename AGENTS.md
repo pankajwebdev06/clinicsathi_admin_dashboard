@@ -27,6 +27,8 @@ Even for an internal tool, admins triage clinic issues from their phone. Every t
 - Admin URL: separate Vercel project
 - Set `NEXT_PUBLIC_API_URL` in env to point at the backend
 
-## 🗄️ Offline-First (TODO)
-The doctor frontend already uses Dexie (`clinicflow-frontend/src/lib/db/schema.ts`) with a sync queue. The admin dashboard needs the same treatment so reports stay readable when the network blips. Mirror that pattern when implementing.
+## 🌐 Online-Only by Design
+Admin dashboard is **online-only**. Do NOT add IndexedDB caching or offline-first patterns here. Reasoning: admin is a real-time analytics view — stale cached data would mislead operators. If the backend is unreachable, surface the error normally.
+
+(Offline-first applies only to `clinicflow-frontend/src/app/(dashboard)/reception` — the data-entry surface.)
 <!-- END:nextjs-agent-rules -->

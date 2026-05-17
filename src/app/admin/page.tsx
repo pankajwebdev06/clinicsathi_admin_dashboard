@@ -45,7 +45,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div style={{ display:'flex', minHeight:'100vh', background:'#0A0F1E', fontFamily:'Inter,system-ui,sans-serif' }}>
+    <div className="admin-shell">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
@@ -53,11 +53,32 @@ export default function AdminPage() {
         ::-webkit-scrollbar-track{background:transparent}
         ::-webkit-scrollbar-thumb{background:#1e293b;border-radius:4px}
         ::-webkit-scrollbar-thumb:hover{background:#334155}
+
+        .admin-shell {
+          display: flex;
+          min-height: 100vh;
+          background: #0A0F1E;
+          font-family: Inter, system-ui, sans-serif;
+        }
+        .admin-main {
+          flex: 1;
+          overflow-y: auto;
+          padding: 32px 36px;
+          max-height: 100vh;
+          min-width: 0;
+        }
+        @media (max-width: 767px) {
+          .admin-shell { flex-direction: column; }
+          .admin-main {
+            padding: 16px 14px 96px;   /* extra bottom padding for fixed bottom-nav */
+            max-height: none;
+          }
+        }
       `}</style>
 
       <AdminSidebar active={tab} onTab={setTab} />
 
-      <main style={{ flex:1, overflowY:'auto', padding:'32px 36px', maxHeight:'100vh' }}>
+      <main className="admin-main">
         {CONTENT[tab]}
       </main>
     </div>
