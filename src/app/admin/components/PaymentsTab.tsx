@@ -32,15 +32,15 @@ export default function PaymentsTab() {
         <p style={{ color:'#6b7280', fontSize:13, marginTop:4 }}>Subscription & billing records from all clinics</p>
       </div>
 
-      {/* Summary Cards */}
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:16, marginBottom:28 }}>
+      {/* Summary Cards — 1 col mobile, 3 col sm+ */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-7">
         <StatCard icon="💰" label="Total Revenue" value={`₹${totalRevenue.toLocaleString('en-IN')}`} accent="#10b981" />
         <StatCard icon="⏳" label="Pending Payments" value={pending} accent="#f59e0b" />
         <StatCard icon="❌" label="Failed Payments" value={failed} accent="#ef4444" />
       </div>
 
       {/* Table */}
-      <div style={{ background:'#1F2937', border:'1px solid rgba(255,255,255,0.06)', borderRadius:20, overflow:'hidden' }}>
+      <div style={{ background:'#1F2937', border:'1px solid rgba(255,255,255,0.06)', borderRadius:20, overflow:'auto' }}>
         {loading ? (
           <div style={{ color:'#6366f1', textAlign:'center', padding:40 }}>Loading…</div>
         ) : records.length === 0 ? (

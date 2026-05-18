@@ -24,30 +24,33 @@ export default function UsersTab() {
 
   return (
     <div>
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:24, flexWrap:'wrap', gap:12 }}>
-        <div>
-          <h1 style={{ color:'#f9fafb', fontSize:24, fontWeight:800, margin:0 }}>Users</h1>
-          <p style={{ color:'#6b7280', fontSize:13, marginTop:4 }}>{users.length} users across all clinics</p>
+      <div style={{ marginBottom:24 }}>
+        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', flexWrap:'wrap', gap:8, marginBottom:12 }}>
+          <div>
+            <h1 style={{ color:'#f9fafb', fontSize:24, fontWeight:800, margin:0 }}>Users</h1>
+            <p style={{ color:'#6b7280', fontSize:13, marginTop:4 }}>{users.length} users across all clinics</p>
+          </div>
         </div>
-        <div style={{ display:'flex', gap:10 }}>
+        {/* Filters — wrap on mobile */}
+        <div style={{ display:'flex', flexWrap:'wrap', gap:8, alignItems:'center' }}>
           {['','doctor','receptionist'].map(r => (
             <button key={r} onClick={() => setRole(r)} style={{
-              padding:'8px 16px', borderRadius:10, fontSize:13, fontWeight:600, cursor:'pointer', transition:'all 0.15s',
+              padding:'8px 14px', borderRadius:10, fontSize:13, fontWeight:600, cursor:'pointer', transition:'all 0.15s',
               border: role===r ? '1px solid rgba(99,102,241,0.5)' : '1px solid rgba(255,255,255,0.08)',
               background: role===r ? 'rgba(99,102,241,0.2)' : 'rgba(255,255,255,0.04)',
-              color: role===r ? '#c4b5fd' : '#6b7280'
+              color: role===r ? '#c4b5fd' : '#6b7280', whiteSpace:'nowrap'
             }}>{r === '' ? 'All' : r.charAt(0).toUpperCase()+r.slice(1)+'s'}</button>
           ))}
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder="🔍  Search…"
-            style={{ background:'#1F2937', border:'1px solid rgba(99,102,241,0.2)', borderRadius:12, color:'#f1f5f9', padding:'8px 14px', fontSize:13, outline:'none', width:180 }} />
+            style={{ background:'#1F2937', border:'1px solid rgba(99,102,241,0.2)', borderRadius:12, color:'#f1f5f9', padding:'8px 14px', fontSize:13, outline:'none', minWidth:0, flex:'1 1 140px', maxWidth:220 }} />
         </div>
       </div>
 
-      <div style={{ background:'#1F2937', border:'1px solid rgba(255,255,255,0.06)', borderRadius:20, overflow:'hidden' }}>
+      <div style={{ background:'#1F2937', border:'1px solid rgba(255,255,255,0.06)', borderRadius:20, overflow:'auto' }}>
         {loading ? (
           <div style={{ color:'#6366f1', textAlign:'center', padding:40 }}>Loading…</div>
         ) : (
-          <table style={{ width:'100%', borderCollapse:'collapse' }}>
+          <table style={{ width:'100%', minWidth:560, borderCollapse:'collapse' }}>
             <thead>
               <tr>{['Name','Mobile','Role','Clinic','Joined','Status'].map(h => <th key={h} style={TH}>{h}</th>)}</tr>
             </thead>

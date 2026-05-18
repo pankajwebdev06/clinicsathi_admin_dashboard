@@ -61,11 +61,17 @@ export default function BlogTab() {
     await loadPosts();
   };
 
-  return (
-    <div style={{ display:'flex', gap:20, height:'calc(100vh - 80px)' }}>
+  // On mobile: show list OR editor, not both at the same time.
+  const panelView = selected ? 'editor' : 'list';
 
-      {/* Left: Post List */}
-      <div style={{ width:260, flexShrink:0, background:'#1F2937', borderRadius:20, border:'1px solid rgba(255,255,255,0.06)', overflow:'hidden', display:'flex', flexDirection:'column' }}>
+  return (
+    <div className="flex flex-col md:flex-row gap-5" style={{ height:'calc(100vh - 80px)' }}>
+
+      {/* Left: Post List — hidden on mobile when editor is open */}
+      <div
+        className={panelView === 'list' ? 'flex flex-col' : 'hidden md:flex md:flex-col'}
+        style={{ width:260, flexShrink:0, background:'#1F2937', borderRadius:20, border:'1px solid rgba(255,255,255,0.06)', overflow:'hidden' }}
+      >
         <div style={{ padding:'16px', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
           <span style={{ color:'#f1f5f9', fontWeight:700, fontSize:14 }}>Blog Posts</span>
           <button onClick={startNew} style={{ background:'linear-gradient(135deg,#6366f1,#8b5cf6)', color:'white', border:'none', borderRadius:8, padding:'5px 12px', fontSize:12, fontWeight:700, cursor:'pointer' }}>+ New</button>
@@ -91,11 +97,18 @@ export default function BlogTab() {
         </div>
       </div>
 
-      {/* Right: Editor */}
+      {/* Right: Editor — full-width on mobile when open, hidden when list is showing */}
       {selected ? (
-        <div style={{ flex:1, background:'#1F2937', borderRadius:20, border:'1px solid rgba(255,255,255,0.06)', display:'flex', flexDirection:'column', overflow:'hidden' }}>
+        <div className={panelView === 'editor' ? 'flex flex-col' : 'hidden md:flex md:flex-col'}
+          style={{ flex:1, background:'#1F2937', borderRadius:20, border:'1px solid rgba(255,255,255,0.06)', overflow:'hidden' }}>
           {/* Toolbar */}
-          <div style={{ padding:'14px 20px', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', gap:10, alignItems:'center', flexWrap:'wrap' }}>
+          <div style={{ padding:'14px 20px', borderBottom:'1px solid rgba(255,255,255,0.06)', display:'flex', gap:8, alignItems:'center', flexWrap:'wrap' }}>
+            {/* Back to list — mobile only */}
+            <button
+              onClick={() => setSelected(null)}
+              className="md:hidden"
+              style={{ background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.1)', color:'#9ca3af', borderRadius:10, padding:'7px 12px', fontSize:12, fontWeight:700, cursor:'pointer' }}
+            >← Back</button>
             <button onClick={save} disabled={saving} style={{ background:'rgba(99,102,241,0.2)', border:'1px solid rgba(99,102,241,0.35)', color:'#c4b5fd', borderRadius:10, padding:'7px 16px', fontSize:12, fontWeight:700, cursor:'pointer' }}>
               {saving ? '…' : '💾 Save Draft'}
             </button>
@@ -157,7 +170,8 @@ export default function BlogTab() {
           </div>
         </div>
       ) : (
-        <div style={{ flex:1, background:'#1F2937', borderRadius:20, border:'1px solid rgba(255,255,255,0.06)', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', gap:12 }}>
+        // Empty-state panel — hidden on mobile (the list IS the main view there)
+        <div className="hidden md:flex" style={{ flex:1, background:'#1F2937', borderRadius:20, border:'1px solid rgba(255,255,255,0.06)', alignItems:'center', justifyContent:'center', flexDirection:'column', gap:12 }}>
           <div style={{ fontSize:48 }}>✍️</div>
           <div style={{ color:'#f1f5f9', fontWeight:700, fontSize:16 }}>Select a post or create new</div>
           <div style={{ color:'#4b5563', fontSize:13 }}>Published posts appear live on your Blog page</div>
