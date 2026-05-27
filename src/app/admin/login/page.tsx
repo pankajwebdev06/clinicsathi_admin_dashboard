@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -123,7 +123,7 @@ export default function AdminLoginPage() {
               <path d="M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <h1 className="text-2xl font-black text-white tracking-tight">ClinicSathi Admin</h1>
+          <h1 className="text-2xl font-black text-white tracking-tight">DoctorKaDost Admin</h1>
           <p className="text-slate-500 text-sm mt-1 font-medium">Internal Developer Console</p>
         </div>
 
@@ -221,7 +221,7 @@ export default function AdminLoginPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   required
-                  placeholder="admin@clinicsathi.com"
+                  placeholder="admin@doctorkadost.com"
                   className="input-dark w-full px-4 py-3.5 rounded-xl text-sm"
                 />
               </div>
@@ -240,13 +240,13 @@ export default function AdminLoginPage() {
 
           <div className="mt-6 pt-5 border-t border-slate-800">
             <p className="text-xs text-slate-600 text-center">
-              This panel is for authorized ClinicSathi team members only.
+              This panel is for authorized DoctorKaDost team members only.
             </p>
           </div>
         </div>
 
         <p className="text-center text-slate-700 text-xs mt-6">
-          ClinicSathi © 2026 · Internal Use Only
+          DoctorKaDost © 2026 · Internal Use Only
         </p>
       </div>
     </div>

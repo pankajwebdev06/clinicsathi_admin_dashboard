@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ClinicSathi Admin",
-  description: "Internal admin dashboard for ClinicSathi operations team",
+  title: "DoctorKaDost Admin",
+  description: "Internal admin dashboard for DoctorKaDost operations team",
 };
 
 export const viewport = {

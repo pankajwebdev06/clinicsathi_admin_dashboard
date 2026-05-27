@@ -1,4 +1,4 @@
-<!-- BEGIN:nextjs-agent-rules -->
+﻿<!-- BEGIN:nextjs-agent-rules -->
 # This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
@@ -23,7 +23,7 @@ Even for an internal tool, admins triage clinic issues from their phone. Every t
 - Tables become stacked cards below `md:`
 
 ## 🌐 Live Deployment
-- Backend: https://clinicsathi-backend.onrender.com (Render free tier, 30–45 s cold start)
+- Backend: https://doctorkadost-backend.onrender.com (Render free tier, 30–45 s cold start)
 - Admin URL: separate Vercel project
 - Set `NEXT_PUBLIC_API_URL` in env to point at the backend
 

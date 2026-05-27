@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useRouter } from 'next/navigation';
 import { AdminTab } from './types';
 
@@ -29,7 +29,7 @@ export default function AdminSidebar({ active, onTab }: Props) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, paddingLeft: 6, marginBottom: 32 }}>
           <div style={{ width: 36, height: 36, borderRadius: 10, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>⚡</div>
           <div>
-            <div style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 13 }}>ClinicSathi</div>
+            <div style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 13 }}>DoctorKaDost</div>
             <div style={{ color: '#4b5563', fontSize: 10, fontWeight: 700, letterSpacing: 1 }}>ADMIN PANEL</div>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function AdminSidebar({ active, onTab }: Props) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>⚡</div>
           <div>
-            <div style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 13, lineHeight: 1.1 }}>ClinicSathi</div>
+            <div style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 13, lineHeight: 1.1 }}>DoctorKaDost</div>
             <div style={{ color: '#818cf8', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>
               {NAV.find(n => n.id === active)?.label || 'Admin'}
             </div>

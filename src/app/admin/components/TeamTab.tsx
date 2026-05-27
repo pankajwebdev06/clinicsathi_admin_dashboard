@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useEffect, useState } from 'react';
 import { adminTeam, TeamMember } from '@/services/admin.api';
 
@@ -50,7 +50,7 @@ export default function TeamTab() {
     <div style={{ maxWidth:900 }}>
       <div style={{ marginBottom:28 }}>
         <h1 style={{ color:'#f9fafb', fontSize:24, fontWeight:800, margin:0 }}>Team</h1>
-        <p style={{ color:'#6b7280', fontSize:13, marginTop:4 }}>Manage internal ClinicSathi team members</p>
+        <p style={{ color:'#6b7280', fontSize:13, marginTop:4 }}>Manage internal DoctorKaDost team members</p>
       </div>
 
       {/* Add Form */}
@@ -63,7 +63,7 @@ export default function TeamTab() {
           </div>
           <div>
             <label style={{ color:'#6b7280', fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:0.8, display:'block', marginBottom:6 }}>Email</label>
-            <input style={input} type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="rahul@clinicsathi.in" />
+            <input style={input} type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="rahul@doctorkadost.in" />
           </div>
           <div>
             <label style={{ color:'#6b7280', fontSize:11, fontWeight:700, textTransform:'uppercase', letterSpacing:0.8, display:'block', marginBottom:6 }}>Role</label>
