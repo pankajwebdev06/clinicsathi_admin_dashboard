@@ -6,8 +6,9 @@ import AdminSidebar from './components/AdminSidebar';
 import OverviewTab  from './components/OverviewTab';
 import ClinicsTab   from './components/ClinicsTab';
 import UsersTab     from './components/UsersTab';
-import PaymentsTab  from './components/PaymentsTab';
-import BlogTab      from './components/BlogTab';
+import PaymentsTab    from './components/PaymentsTab';
+import PromoCodesTab  from './components/PromoCodesTab';
+import BlogTab        from './components/BlogTab';
 import TeamTab      from './components/TeamTab';
 import SecurityTab  from './components/SecurityTab';
 
@@ -38,8 +39,9 @@ export default function AdminPage() {
     overview: <OverviewTab />,
     clinics:  <ClinicsTab />,
     users:    <UsersTab />,
-    payments: <PaymentsTab />,
-    blog:     <BlogTab />,
+    payments:    <PaymentsTab />,
+    promo_codes: <PromoCodesTab />,
+    blog:        <BlogTab />,
     team:     <TeamTab />,
     security: <SecurityTab />,
   };

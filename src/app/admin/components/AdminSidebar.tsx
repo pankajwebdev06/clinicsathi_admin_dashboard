@@ -6,8 +6,9 @@ const NAV: { id: AdminTab; icon: string; label: string; short: string }[] = [
   { id: 'overview', icon: '📊', label: 'Overview',  short: 'Stats'    },
   { id: 'clinics',  icon: '🏥', label: 'Clinics',   short: 'Clinics'  },
   { id: 'users',    icon: '👥', label: 'Users',     short: 'Users'    },
-  { id: 'payments', icon: '💳', label: 'Payments',  short: 'Pay'      },
-  { id: 'blog',     icon: '✍️', label: 'Blog CMS',  short: 'Blog'     },
+  { id: 'payments',    icon: '💳', label: 'Payments',    short: 'Pay'    },
+  { id: 'promo_codes', icon: '🎟️', label: 'Promo Codes', short: 'Promos' },
+  { id: 'blog',        icon: '✍️', label: 'Blog CMS',    short: 'Blog'   },
   { id: 'team',     icon: '🛡️', label: 'Team',      short: 'Team'     },
   { id: 'security', icon: '🔒', label: 'Security',  short: 'Security' },
 ];

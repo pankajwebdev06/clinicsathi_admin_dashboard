@@ -214,6 +214,41 @@ export const adminTeam = {
     adminFetch<{ message: string }>(`/team/${id}`, { method: 'DELETE' }),
 };
 
+// ─── Promo Codes ───────────────────────────────────────────────────────
+export interface PromoCode {
+  id: string;
+  code: string;
+  description: string | null;
+  discount_type: 'percent' | 'fixed' | 'free_trial';
+  discount_value: number;
+  max_uses: number | null;
+  used_count: number;
+  is_active: boolean;
+  is_public: boolean;
+  expires_at: string | null;
+  created_at: string | null;
+}
+
+export const adminPromoCodes = {
+  list: () => adminFetch<PromoCode[]>('/promo-codes'),
+  create: (data: Partial<PromoCode> & { discount_type: string; discount_value: number }) =>
+    adminFetch<{ id: string; code: string; message: string }>('/promo-codes', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  update: (id: string, data: Partial<PromoCode>) =>
+    adminFetch<PromoCode>(`/promo-codes/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    }),
+  toggle: (id: string) =>
+    adminFetch<{ id: string; code: string; is_active: boolean }>(`/promo-codes/${id}/toggle`, {
+      method: 'PATCH',
+    }),
+  delete: (id: string) =>
+    adminFetch<{ message: string }>(`/promo-codes/${id}`, { method: 'DELETE' }),
+};
+
 // ─── Public Blog (no auth) ─────────────────────────────────────────────
 export const publicBlog = {
   listPublished: async (): Promise<BlogPost[]> => {
